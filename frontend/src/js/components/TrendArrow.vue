@@ -45,8 +45,14 @@
 </template>
 <script>
 	export default {
+		props: ['value'],
 		data: () => ({
 
 		})
 	}
 </script>
+<style>
+	svg {
+		height: 30px;
+	}
+</style>
