@@ -23,3 +23,8 @@
 		components: {CurrencyRow}
 	}
 </script>
+<style>
+	.forex-grid {
+		width: 100%;
+	}
+</style>

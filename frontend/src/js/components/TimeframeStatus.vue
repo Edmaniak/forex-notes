@@ -15,3 +15,9 @@
 		})
 	}
 </script>
+<style>
+	.timeframe-status {
+		display: flex;
+		align-items: center;
+	}
+</style>

@@ -1,0 +1,7 @@
+* {
+	font-family: Tahoma;
+}
+
+span, a, strong {
+	display: inline-block;
+}

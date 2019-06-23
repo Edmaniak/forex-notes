@@ -1,5 +1,5 @@
 <template>
-	<textarea>{{text}}</textarea>
+	<textarea class="clever-textarea">{{text}}</textarea>
 </template>
 <script>
 	export default {
@@ -7,3 +7,8 @@
 		data: () => ({})
 	}
 </script>
+<style>
+	.clever-textarea {
+		padding: 5px;
+	}
+</style>

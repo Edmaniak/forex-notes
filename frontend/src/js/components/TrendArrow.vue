@@ -46,13 +46,22 @@
 <script>
 	export default {
 		props: ['value'],
-		data: () => ({
+		data: () => ({}),
+		methods: {
+			changeValue: function () {
+				if (this.value >= 2) this.value = -2;
 
-		})
+			},
+			getClass: function () {
+
+			}
+		}
 	}
 </script>
 <style>
 	svg {
 		height: 30px;
+		cursor: pointer;
+		margin-right: 5px;
 	}
 </style>
