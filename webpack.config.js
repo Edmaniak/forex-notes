@@ -1,8 +1,15 @@
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
+const webpack = require('webpack');
 
 module.exports = {
 	entry: path.resolve(__dirname, 'frontend/src/js/index.js'),
+	devServer: {
+		contentBase: path.join(__dirname, 'frontend/dist'),
+		compress: true,
+		port: 9999,
+		hot: true
+	},
 	output: {
 		filename: 'main.js',
 		path: path.resolve(__dirname, 'frontend/dist/js')
@@ -13,7 +20,8 @@ module.exports = {
 		}
 	},
 	plugins: [
-		new VueLoaderPlugin()
+		new VueLoaderPlugin(),
+		new webpack.HotModuleReplacementPlugin()
 	],
 	module: {
 		rules: [

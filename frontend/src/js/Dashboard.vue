@@ -1,18 +1,17 @@
 <template>
 	<div id="dashboard">
 		<div class="container">
-			<forex-grid :pairs="pairs"></forex-grid>
+			<forex-grid :pairs="allInstruments"></forex-grid>
 		</div>
 	</div>
 </template>
 <script>
 	import ForexGrid from "./components/ForexGrid.vue";
-	import Data from './data/testData'
-
+	import {mapGetters} from 'vuex'
 	export default {
 		data: () => ({
-			pairs: Data.pairs
 		}),
+		computed: mapGetters(['allInstruments']),
 		components: {ForexGrid},
 	}
 </script>
@@ -20,5 +19,6 @@
 	.container {
 		max-width: 1600px;
 		margin: 0 auto;
+		margin-top: 100px;
 	}
 </style>

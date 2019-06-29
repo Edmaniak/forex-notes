@@ -1,5 +1,6 @@
 <template>
-	<svg :class="classValue" @click="changeValue" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	<svg :class="classValue" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+		 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
 		 y="0px"
 		 viewBox="0 0 512.171 512.171" style="enable-background:new 0 0 512.171 512.171;" xml:space="preserve">
 <g>
@@ -44,50 +45,55 @@
 
 </template>
 <script>
-	import {mapActions} from 'vuex';
 	export default {
-		props: {timeframe: Object, pairKey: Number, timeframeKey: String},
+		props: ['values'],
 		data: () => ({
 			classValues: ['down-trend', 'chop', 'up-trend'],
 			actualValue: -1
 		}),
+		created: function(){
+
+		},
 		computed: {
-			classValue: function() {
-				return this.classValues[this.actualValue];
+			classValue: function () {
+				const val = this.computeAverage(
+					this.values.hour.value,
+					this.values.fourHour.value,
+					this.values.day.value,
+					this.values.week.value,
+					this.values.month.value
+				);
+				return this.classValues[Math.round(val)];
 			}
 		},
 		methods: {
-			...mapActions(['refreshArrows']),
-			changeValue: function() {
-				if(this.actualValue < 2) this.actualValue++;
-				else this.actualValue = 0;
-				this.refreshArrows({
-					key: this.pairKey,
-					timeFrame: this.timeframe.key,
-					value: this.actualValue
-				})
+			computeAverage: function(){
+				let average = 0;
+				for (let i = 0; i < arguments.length; i++)
+					average += arguments[i];
+				return average / arguments.length;
 			}
 		},
-		created() {
-			this.actualValue = this.timeframe.value;
-		}
 	}
 </script>
-<style scoped>
+<style>
 	svg {
 		height: 30px;
 		cursor: pointer;
-		margin-right: 15px;
+		margin-right: 5px;
 		fill: blue;
 	}
+
 	svg.down-trend {
 		fill: red;
 		transform: rotate(-45deg);
 	}
+
 	svg.up-trend {
 		fill: green;
 		transform: rotate(-135deg);
 	}
+
 	svg.chop {
 		fill: #917404;
 		transform: rotate(-90deg);

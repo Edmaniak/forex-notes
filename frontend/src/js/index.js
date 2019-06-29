@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Dashboard from './Dashboard.vue'
+import {store} from './store';
 
-const vm = new Vue({
+new Vue({
+	store,
 	components: {Dashboard}
 }).$mount('#main');

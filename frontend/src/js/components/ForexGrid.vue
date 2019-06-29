@@ -4,13 +4,15 @@
 		<tr>
 			<th>Pair</th>
 			<th>1H</th>
+			<th>4H</th>
 			<th>Day</th>
 			<th>Week</th>
 			<th>Month</th>
 		</tr>
 		</thead>
 		<tbody>
-		<currency-row v-bind:key="pair.name" v-for="pair in pairs" :pair="pair"></currency-row>
+		<currency-row v-bind:key="pair.name" v-for="(pair, index) in pairs" :pairKey="index"
+					  :pair="pair"></currency-row>
 		</tbody>
 	</table>
 </template>
@@ -23,8 +25,11 @@
 		components: {CurrencyRow}
 	}
 </script>
-<style>
+<style scoped>
 	.forex-grid {
 		width: 100%;
+	}
+	th {
+		padding: 15px 10px;
 	}
 </style>
