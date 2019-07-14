@@ -1,6 +1,7 @@
 <template>
 	<div id="dashboard">
 		<div class="container">
+			<countdown></countdown>
 			<forex-grid :pairs="allInstruments"></forex-grid>
 		</div>
 	</div>
@@ -8,11 +9,12 @@
 <script>
 	import ForexGrid from "./components/ForexGrid.vue";
 	import {mapGetters} from 'vuex'
+	import Countdown from "./components/Countdown.vue";
 	export default {
 		data: () => ({
 		}),
 		computed: mapGetters(['allInstruments']),
-		components: {ForexGrid},
+		components: {Countdown, ForexGrid},
 	}
 </script>
 <style>

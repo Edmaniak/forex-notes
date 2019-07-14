@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const instrumentSchema = mongoose.Schema({
-	_id: mongoose.Types.ObjectId,
 	name: String,
 	onFire: Boolean,
 	timeFrames: [
@@ -17,3 +16,5 @@ const instrumentSchema = mongoose.Schema({
 		comment: String
 	}
 });
+
+module.exports = mongoose.model('Instrument', instrumentSchema);
