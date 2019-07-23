@@ -28,6 +28,9 @@
 <style scoped>
 	.forex-grid {
 		width: 100%;
+		background-color: #dedede;
+		border-radius: 20px;
+		padding: 15px;
 	}
 	th {
 		padding: 15px 10px;

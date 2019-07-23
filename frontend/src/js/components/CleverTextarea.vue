@@ -11,7 +11,7 @@
 	textarea {
 		padding: 10px;
 		border: none;
-		background-color: #dadada;
+		background-color: var(--green);
 		border-radius: 10px;
 		font-size: 12px;
 		line-height: 1.5em;

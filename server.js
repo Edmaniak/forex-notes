@@ -72,6 +72,6 @@ app.delete('/api/instruments', async (request, response) => {
 	} catch (err) {
 		response.status(500).send(err);
 	}
-})
+});
 
 app.listen(3000);

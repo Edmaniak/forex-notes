@@ -17,6 +17,7 @@
 	div {
 		text-align: center;
 		font-size: 32px;
+		font-weight: bold;
 		margin-bottom: 60px;
 	}
 </style>

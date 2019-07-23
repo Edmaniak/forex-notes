@@ -79,17 +79,18 @@
 		cursor: pointer;
 		margin-right: 15px;
 		fill: blue;
+		transition: all 0.2s;
 	}
 	svg.down-trend {
-		fill: red;
+		fill: var(--red);
 		transform: rotate(-45deg);
 	}
 	svg.up-trend {
-		fill: green;
+		fill: var(--green);
 		transform: rotate(-135deg);
 	}
 	svg.chop {
-		fill: #917404;
+		fill: var(--orange);
 		transform: rotate(-90deg);
 	}
 </style>

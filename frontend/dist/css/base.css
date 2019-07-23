@@ -1,5 +1,44 @@
+@font-face {
+	font-family: 'Open Sans';
+	src: url('../fonts/OpenSans-Light.woff2') format('woff2'),
+	url('../fonts/OpenSans-Light.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	src: url('../fonts/OpenSans-Bold.woff2') format('woff2'),
+	url('../fonts/OpenSans-Bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	src: url('../fonts/OpenSans-Regular.woff2') format('woff2'),
+	url('../fonts/OpenSans-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+:root {
+	--blue: #247BA0;
+	--green: #70C1B3;
+	--light-green: #B2DBBF;
+	--yellow: #F3FFBD;
+	--orange: #ff8647;
+	--red: #FF1654;
+	--black: #191919
+}
+
 * {
-	font-family: Tahoma;
+	font-family: 'Open Sans';
+	color: var(--black);
+}
+html {
+	background-color: #f4f4f4;
 }
 
 span, a, strong {
