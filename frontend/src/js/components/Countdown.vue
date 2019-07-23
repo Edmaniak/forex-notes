@@ -1,5 +1,5 @@
 <template>
-	<div>{{now}} minutes remains</div>
+	<div><img src="img/clock.svg" alt="">{{now}} minutes remains</div>
 </template>
 <script>
 	export default {
@@ -18,6 +18,14 @@
 		text-align: center;
 		font-size: 32px;
 		font-weight: bold;
-		margin-bottom: 60px;
+		margin: 0 auto 60px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+	}
+	img {
+		width: 28px;
+		margin-right: 15px;
 	}
 </style>
