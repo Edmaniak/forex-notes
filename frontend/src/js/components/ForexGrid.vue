@@ -11,7 +11,7 @@
 		</tr>
 		</thead>
 		<tbody>
-		<currency-row v-bind:key="pair.name" v-for="(pair, index) in pairs" :pairKey="index"
+		<currency-row v-bind:key="pair.name" v-for="(pair, index) in pairs" :pairIndex="index"
 					  :pair="pair"></currency-row>
 		</tbody>
 	</table>
@@ -21,8 +21,7 @@
 
 	export default {
 		props: ['pairs'],
-		data: () => ({}),
-		components: {CurrencyRow}
+		components: {CurrencyRow},
 	}
 </script>
 <style scoped>

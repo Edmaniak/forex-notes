@@ -1,10 +1,17 @@
 <template>
-	<textarea>{{text}}</textarea>
+	<textarea @blur="saveIt">{{text}}</textarea>
 </template>
 <script>
+	import {mapActions} from 'vuex'
 	export default {
-		props: ['text'],
-		data: () => ({})
+		props: ['text', 'instrument'],
+		data: () => ({}),
+		methods: {
+			...mapActions(['saveInstrument']),
+			saveIt: function () {
+
+			}
+		}
 	}
 </script>
 <style scoped>

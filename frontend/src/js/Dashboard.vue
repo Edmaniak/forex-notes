@@ -9,14 +9,19 @@
 </template>
 <script>
 	import ForexGrid from "./components/ForexGrid.vue";
-	import {mapGetters} from 'vuex'
+	import {mapGetters, mapActions} from 'vuex'
 	import Countdown from "./components/Countdown.vue";
 	import ControlPanel from "./components/ControlPanel.vue";
 	export default {
-		data: () => ({
-		}),
+		data: () => ({}),
 		computed: mapGetters(['allInstruments']),
 		components: {ControlPanel, Countdown, ForexGrid},
+		methods: {
+			...mapActions(['fetchInstruments']),
+		},
+		created() {
+			this.fetchInstruments();
+		}
 	}
 </script>
 <style>

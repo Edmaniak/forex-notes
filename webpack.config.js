@@ -21,7 +21,6 @@ module.exports = {
 	},
 	plugins: [
 		new VueLoaderPlugin(),
-		new webpack.HotModuleReplacementPlugin()
 	],
 	module: {
 		rules: [

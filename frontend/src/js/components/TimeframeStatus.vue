@@ -1,14 +1,14 @@
 <template>
 	<div class="timeframe-status">
-		<trend-arrow :pairKey="this.pairKey" :timeframe="timeframe"></trend-arrow>
-		<clever-textarea :text="timeframe.commentary"></clever-textarea>
+		<trend-arrow :time-frame="timeFrame" :time-frame-index="timeFrameIndex" :pair-index="pairIndex"></trend-arrow>
+		<clever-textarea :text="timeFrame.comment"></clever-textarea>
 	</div>
 </template>
 <script>
 	import TrendArrow from "./TrendArrow.vue";
 	import CleverTextarea from "./CleverTextarea.vue";
 	export default {
-		props: ['timeframe', 'pairKey'],
+		props: ['timeFrame', 'timeFrameIndex', 'pairIndex'],
 		components: {CleverTextarea, TrendArrow},
 		data: () => ({
 

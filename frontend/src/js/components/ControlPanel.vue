@@ -1,14 +1,24 @@
 <template>
 	<div class="control-panel">
-		<div class="btn">Save</div>
-		<div class="btn">Delete</div>
+		<div @click="deleteAll" class="btn">Delete all</div>
+		<div @click="add"class="btn">Add instrument</div>
 	</div>
 </template>
 <script>
+	import {mapActions} from 'vuex'
 	export default {
 		data: () => ({
 
 		}),
+		methods: {
+			...mapActions(['saveInstruments']),
+			deleteAll: function () {
+
+			},
+			add: function () {
+
+			}
+		}
 
 	}
 </script>

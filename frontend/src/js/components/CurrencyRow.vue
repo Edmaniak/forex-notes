@@ -2,24 +2,12 @@
 	<tr>
 		<td class="pair">
 			<div>
-				<summary-trend-arrow :values="pair.timeFrames"></summary-trend-arrow>
+				<summary-trend-arrow :timeFrames="pair.timeFrames"></summary-trend-arrow>
 				<span>{{pair.name}}</span>
 			</div>
 		</td>
-		<td>
-			<timeframe-status :pairKey="this.pairKey" :timeframe="pair.timeFrames.hour"></timeframe-status>
-		</td>
-		<td>
-			<timeframe-status :pairKey="this.pairKey" :timeframe="pair.timeFrames.fourHour"></timeframe-status>
-		</td>
-		<td>
-			<timeframe-status :pairKey="this.pairKey" :timeframe="pair.timeFrames.day"></timeframe-status>
-		</td>
-		<td>
-			<timeframe-status :pairKey="this.pairKey" :timeframe="pair.timeFrames.week"></timeframe-status>
-		</td>
-		<td>
-			<timeframe-status :pairKey="this.pairKey" :timeframe="pair.timeFrames.month"></timeframe-status>
+		<td v-for="(timeFrame, timeFrameIndex) in this.pair.timeFrames">
+			<timeframe-status :pair-index="pairIndex" :time-frame="timeFrame" :time-frame-index="timeFrameIndex"></timeframe-status>
 		</td>
 	</tr>
 </template>
@@ -30,8 +18,11 @@
 
 	export default {
 		components: {SummaryTrendArrow, TrendArrow, TimeframeStatus},
-		props: ['pair', 'pairKey'],
+		props: ['pair', 'pairIndex'],
 		data: () => ({}),
+		created() {
+			console.log(this.pair.timeFrames)
+		}
 	}
 </script>
 <style scoped>

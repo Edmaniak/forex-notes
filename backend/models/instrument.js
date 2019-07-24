@@ -27,6 +27,13 @@ const instrumentSchema = mongoose.Schema({
 				comment: "lorem"
 			},
 			{
+				key: 'day',
+				name: 'Day',
+				shortcut: '1D',
+				value: 2,
+				comment: "lorem"
+			},
+			{
 				key: 'week',
 				name: 'Week',
 				shortcut: '1W',

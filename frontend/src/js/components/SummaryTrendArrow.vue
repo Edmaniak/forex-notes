@@ -46,32 +46,25 @@
 </template>
 <script>
 	export default {
-		props: ['values'],
+		props: ['timeFrames'],
 		data: () => ({
 			classValues: ['down-trend', 'chop', 'up-trend'],
 			actualValue: -1
 		}),
 		created: function(){
-
+			console.log(this.timeFrames);
 		},
 		computed: {
 			classValue: function () {
-				const val = this.computeAverage(
-					this.values.hour.value,
-					this.values.fourHour.value,
-					this.values.day.value,
-					this.values.week.value,
-					this.values.month.value
-				);
-				return this.classValues[Math.round(val)];
+				return this.classValues[this.computeAverage()];
 			}
 		},
 		methods: {
 			computeAverage: function(){
 				let average = 0;
-				for (let i = 0; i < arguments.length; i++)
-					average += arguments[i];
-				return average / arguments.length;
+				for (let i = 0; i < this.timeFrames.length; i++)
+					average += this.timeFrames[i].value;
+				return Math.round(average / this.timeFrames.length);
 			}
 		},
 	}

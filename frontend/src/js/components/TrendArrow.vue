@@ -46,7 +46,7 @@
 <script>
 	import {mapActions} from 'vuex';
 	export default {
-		props: {timeframe: Object, pairKey: Number, timeframeKey: String},
+		props: {timeFrame: Object, pairIndex: Number, timeFrameIndex: Number},
 		data: () => ({
 			classValues: ['down-trend', 'chop', 'up-trend'],
 			actualValue: -1
@@ -62,14 +62,14 @@
 				if(this.actualValue < 2) this.actualValue++;
 				else this.actualValue = 0;
 				this.refreshArrows({
-					key: this.pairKey,
-					timeFrame: this.timeframe.key,
+					pairIndex: this.pairIndex,
+					timeFrameIndex: this.timeFrameIndex,
 					value: this.actualValue
 				})
 			}
 		},
 		created() {
-			this.actualValue = this.timeframe.value;
+			this.actualValue = this.timeFrame.value;
 		}
 	}
 </script>
