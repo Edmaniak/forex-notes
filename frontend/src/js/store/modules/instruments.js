@@ -5,7 +5,10 @@ const state = {
 	app: {}
 };
 const getters = {
-	allInstruments: state => state.instruments
+	allInstruments: state => state.instruments,
+	getArrowValue: state => (timeFrameIndex, pairIndex) => {
+		return state.instruments[pairIndex][timeFrameIndex].value;
+	}
 };
 const actions = {
 	async fetchInstruments({commit}) {

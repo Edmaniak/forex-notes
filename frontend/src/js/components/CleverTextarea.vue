@@ -9,8 +9,7 @@
 		}),
 		created() {
 			this.dataText = this.text;
-		}
-
+		},
 	}
 </script>
 <style scoped>

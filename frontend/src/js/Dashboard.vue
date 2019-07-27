@@ -4,6 +4,7 @@
 			<countdown></countdown>
 			<control-panel></control-panel>
 			<forex-grid :pairs="allInstruments"></forex-grid>
+			<economical-calendar></economical-calendar>
 		</div>
 	</div>
 </template>
@@ -12,10 +13,11 @@
 	import {mapGetters, mapActions} from 'vuex'
 	import Countdown from "./components/Countdown.vue";
 	import ControlPanel from "./components/ControlPanel.vue";
+	import EconomicalCalendar from "./components/EconomicalCalendar.vue";
 	export default {
 		data: () => ({}),
 		computed: mapGetters(['allInstruments']),
-		components: {ControlPanel, Countdown, ForexGrid},
+		components: {EconomicalCalendar, ControlPanel, Countdown, ForexGrid},
 		methods: {
 			...mapActions(['fetchInstruments']),
 		},
