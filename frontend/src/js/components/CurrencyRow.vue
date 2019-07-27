@@ -7,7 +7,7 @@
 			</div>
 		</td>
 		<td v-for="(timeFrame, timeFrameIndex) in this.pair.timeFrames">
-			<timeframe-status :pair-index="pairIndex" :time-frame="timeFrame" :time-frame-index="timeFrameIndex"></timeframe-status>
+			<timeframe-status :instrument="pair" :pair-index="pairIndex" :time-frame="timeFrame" :time-frame-index="timeFrameIndex"></timeframe-status>
 		</td>
 	</tr>
 </template>

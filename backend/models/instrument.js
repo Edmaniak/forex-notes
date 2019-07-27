@@ -52,6 +52,6 @@ const instrumentSchema = mongoose.Schema({
 	fundamentals: {
 		comment: String
 	}
-});
+}, {versionKey: false});
 
 module.exports = mongoose.model('Instrument', instrumentSchema);

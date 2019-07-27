@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 const state = {
-	instruments: []
+	instruments: [],
+	app: {}
 };
 const getters = {
 	allInstruments: state => state.instruments
@@ -11,19 +12,22 @@ const actions = {
 		const response = await axios.get('/api/instruments');
 		commit('setInstruments', response.data);
 	},
-	refreshArrows({commit}, arrow) {
+	refreshArrows({commit, state}, arrow) {
 		commit('changeArrow', arrow);
+		axios.put(`/api/instrument/${state.instruments[arrow.pairIndex]._id}`, state.instruments[arrow.pairIndex])
 	},
-	async saveInstrument({commit}, instrument) {
-		const response = await axios.post(`/api/instrument${instrument._id}`, instrument);
-		//commit('setInstrument', instrument);
-		console.log(response)
+	changeComment({commit, state}, data) {
+		commit('changeComment', data);
+		axios.put(`/api/instrument/${state.instruments[data.pairIndex]._id}`, state.instruments[data.pairIndex]);
 	}
 };
 const mutations = {
 	setInstruments: (state, instruments) => (state.instruments = instruments),
 	changeArrow: (state, arrow) => {
 		state.instruments[arrow.pairIndex].timeFrames[arrow.timeFrameIndex].value = arrow.value;
+	},
+	changeComment: (state, data) => {
+		state.instruments[data.pairIndex].timeFrames[data.timeFrameIndex].comment = data.newComment;
 	}
 };
 

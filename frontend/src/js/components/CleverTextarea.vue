@@ -1,17 +1,16 @@
 <template>
-	<textarea @blur="saveIt">{{text}}</textarea>
+	<textarea v-model="dataText" @blur="$emit('onBlur', dataText)">{{dataText}}</textarea>
 </template>
 <script>
-	import {mapActions} from 'vuex'
 	export default {
-		props: ['text', 'instrument'],
-		data: () => ({}),
-		methods: {
-			...mapActions(['saveInstrument']),
-			saveIt: function () {
-
-			}
+		props: ['text'],
+		data: () => ({
+			dataText: ""
+		}),
+		created() {
+			this.dataText = this.text;
 		}
+
 	}
 </script>
 <style scoped>
