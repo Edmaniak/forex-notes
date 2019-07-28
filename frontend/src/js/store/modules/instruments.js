@@ -2,6 +2,8 @@ import axios from 'axios'
 
 const state = {
 	instruments: [],
+	instrumentToDeleteId: false,
+	instrumentToDeleteIndex: false
 };
 const getters = {
 	allInstruments: state => state.instruments,
@@ -22,9 +24,12 @@ const actions = {
 		commit('changeComment', data);
 		axios.put(`/api/instrument/${state.instruments[data.pairIndex]._id}`, state.instruments[data.pairIndex]);
 	},
-	deletePair({commit, state}, data) {
-		commit('deletePair', data);
-		axios.delete(`/api/instrument/${state.app.instrumentToDeleteId}`)
+	deleteInstrument({commit,state}) {
+		axios.delete(`/api/instrument/${state.instruments.instrumentToDeleteId}`)
+			.then((res) => {
+				commit('deleteInstrument');
+				commit('setShowDeleteConfirmationWindow', false)
+			})
 	},
 	addInstrument({commit, state}, data) {
 		axios.post(`/api/instrument`, data)
@@ -33,9 +38,10 @@ const actions = {
 				commit('setAddInstrumentWindow', false)
 			})
 	},
-	deleteAll({commit, state}, data) {
+	setInstrumentToDelete: ({commit}, data) => {
+		commit('setInstrumentToDelete', data)
+	},
 
-	}
 };
 const mutations = {
 	setInstruments: (state, instruments) => (state.instruments = instruments),
@@ -45,12 +51,16 @@ const mutations = {
 	changeComment: (state, data) => {
 		state.instruments[data.pairIndex].timeFrames[data.timeFrameIndex].comment = data.newComment;
 	},
-	deletePair: (state, data) => {
-		state.instruments.splice(data.index, data.index)
+	deleteInstrument: (state) => {
+		state.instruments.splice(state.instruments.instrumentToDeleteIndex, state.instruments.instrumentToDeleteIndex)
 	},
 	addInstrument: (state, data) => {
 		state.instruments.push(data);
-	}
+	},
+	setInstrumentToDelete: (state, data) => {
+		state.instruments.instrumentToDeleteId = data.id;
+		state.instruments.instrumentToDeleteIndex = data.index
+	},
 };
 
 export default {

@@ -7,10 +7,13 @@
 			</div>
 		</td>
 		<td v-for="(timeFrame, timeFrameIndex) in this.pair.timeFrames">
-			<timeframe-status :instrument="pair" :pair-index="pairIndex" :time-frame="timeFrame" :time-frame-index="timeFrameIndex"></timeframe-status>
+			<timeframe-status :instrument="pair" :pair-index="pairIndex" :time-frame="timeFrame"
+							  :time-frame-index="timeFrameIndex"></timeframe-status>
 		</td>
 		<td>
-			<i @click="deleteIt" class="fas fa-times"></i>
+			<div @click="deleteIt">
+				<i  class="fas fa-times"></i>
+			</div>
 		</td>
 	</tr>
 </template>
@@ -30,7 +33,7 @@
 		methods: {
 			...mapActions(['setInstrumentToDelete', 'setShowDeleteConfirmationWindow']),
 			deleteIt: function () {
-				this.setInstrumentToDelete(this.pair._id);
+				this.setInstrumentToDelete({id:this.pair._id, index: this.pairIndex});
 				this.setShowDeleteConfirmationWindow(true)
 			}
 		}
@@ -41,6 +44,7 @@
 		display: flex;
 		align-items: center;
 	}
+
 	td {
 		padding: 15px 10px;
 	}

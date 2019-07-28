@@ -2,7 +2,6 @@ const state = {
 	app: {
 		showDeleteConfirmationWindow: false,
 		showAddInstrumentWindow: false,
-		instrumentToDeleteId: false
 	}
 };
 const getters = {
@@ -10,9 +9,7 @@ const getters = {
 	getAddInstrumentWindow: state => state.app.showAddInstrumentWindow
 };
 const actions = {
-	setInstrumentToDelete: ({commit}, id) => {
-		commit('setInstrumentToDelete', id)
-	},
+
 	setShowDeleteConfirmationWindow: ({commit}, visible) => {
 		commit('setShowDeleteConfirmationWindow', visible);
 	},
@@ -22,9 +19,7 @@ const actions = {
 	}
 };
 const mutations = {
-	setInstrumentToDelete: (state, id) => {
-		state.app.instrumentToDeleteId = id;
-	},
+
 	setShowDeleteConfirmationWindow: (state, visible) => {
 		state.app.showDeleteConfirmationWindow = visible;
 	},

@@ -1,7 +1,7 @@
 <template>
-	<div>
-		<span>Smazat?</span>
-		<app-button @click="">OK</app-button>
+	<div class="modal" :class="{active: getDeleteConfirmationWindowStatus}">
+		<div>Smazat?</div>
+		<app-button @onClick="deleteInstrument">OK</app-button>
 	</div>
 </template>
 <script>
@@ -11,10 +11,10 @@
 		components: {AppButton},
 		data: () => ({}),
 		methods: {
-			...mapActions['deletePair'],
+			...mapActions(['deleteInstrument']),
 		},
 		computed: {
-			...mapGetters['getDeleteConfirmationWindowStatus']
+			...mapGetters(['getDeleteConfirmationWindowStatus'])
 		}
 	}
 </script>

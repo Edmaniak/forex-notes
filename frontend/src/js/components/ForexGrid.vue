@@ -17,7 +17,7 @@
 	</table>
 </template>
 <script>
-	import CurrencyRow from "./CurrencyRow.vue";
+	import CurrencyRow from "./InstrumentRow.vue";
 
 	export default {
 		props: ['pairs'],
