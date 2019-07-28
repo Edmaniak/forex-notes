@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const connectionString = 'mongodb+srv://admin:Adik3714@cluster0-p1zzs.mongodb.net/FinancialInstrumentsData?retryWrites=true&w=majority';
 const Instrument = require('./backend/models/instrument');
 const BodyParser = require('body-parser');
+const opn = require('opn');
 const app = express();
 // Initialization
 app.use(express.static("./frontend/dist"));
@@ -75,3 +76,4 @@ app.delete('/api/instruments', async (request, response) => {
 });
 
 app.listen(3000);
+opn('http://localhost:3000');
