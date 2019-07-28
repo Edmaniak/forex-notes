@@ -1,6 +1,6 @@
 <template>
 	<div class="control-panel">
-		<app-button @onClick="func" class="btn">Add instrument</app-button>
+		<app-button @onClick="func" class="btn">+</app-button>
 	</div>
 </template>
 <script>
@@ -23,11 +23,11 @@
 <style scoped>
 	.control-panel {
 		display: flex;
-		background-color: var(--blue);
 		max-width: 50%;
 		margin: 0 auto;
 		padding: 15px;
 		justify-content: center;
+
 		border-top-left-radius: 20px;
 		border-top-right-radius: 20px;
 	}

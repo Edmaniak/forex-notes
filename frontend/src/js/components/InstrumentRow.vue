@@ -14,7 +14,7 @@
 		</td>
 		<td>
 			<div @click="deleteIt">
-				<i  class="fas fa-times"></i>
+				<i class="fas fa-times"></i>
 			</div>
 		</td>
 	</tr>
@@ -35,7 +35,7 @@
 		methods: {
 			...mapActions(['setInstrumentToDelete', 'setShowDeleteConfirmationWindow']),
 			deleteIt: function () {
-				this.setInstrumentToDelete({id:this.pair._id, index: this.pairIndex});
+				this.setInstrumentToDelete({id: this.pair._id, index: this.pairIndex});
 				this.setShowDeleteConfirmationWindow(true)
 			},
 			changeOnFire: function () {
@@ -49,12 +49,23 @@
 		display: flex;
 		align-items: center;
 	}
+
 	.on-fire {
 		width: 30px;
 		margin-right: 5px;
 		cursor: pointer;
 	}
+
 	td {
 		padding: 15px 10px;
+		background-color: #dedede;
+	}
+	td:first-child {
+		border-top-left-radius: 10px;
+		border-bottom-left-radius: 10px;
+	}
+	td:last-child {
+		border-top-right-radius: 10px;
+		border-bottom-right-radius: 10px;
 	}
 </style>
