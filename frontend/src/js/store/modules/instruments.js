@@ -2,7 +2,6 @@ import axios from 'axios'
 
 const state = {
 	instruments: [],
-	app: {}
 };
 const getters = {
 	allInstruments: state => state.instruments,
@@ -22,6 +21,20 @@ const actions = {
 	changeComment({commit, state}, data) {
 		commit('changeComment', data);
 		axios.put(`/api/instrument/${state.instruments[data.pairIndex]._id}`, state.instruments[data.pairIndex]);
+	},
+	deletePair({commit, state}, data) {
+		commit('deletePair', data);
+		axios.delete(`/api/instrument/${state.app.instrumentToDeleteId}`)
+	},
+	addInstrument({commit, state}, data) {
+		axios.post(`/api/instrument`, data)
+			.then((res) => {
+				commit('addInstrument', res.data);
+				commit('setAddInstrumentWindow', false)
+			})
+	},
+	deleteAll({commit, state}, data) {
+
 	}
 };
 const mutations = {
@@ -31,6 +44,12 @@ const mutations = {
 	},
 	changeComment: (state, data) => {
 		state.instruments[data.pairIndex].timeFrames[data.timeFrameIndex].comment = data.newComment;
+	},
+	deletePair: (state, data) => {
+		state.instruments.splice(data.index, data.index)
+	},
+	addInstrument: (state, data) => {
+		state.instruments.push(data);
 	}
 };
 

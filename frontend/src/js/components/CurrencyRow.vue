@@ -9,12 +9,16 @@
 		<td v-for="(timeFrame, timeFrameIndex) in this.pair.timeFrames">
 			<timeframe-status :instrument="pair" :pair-index="pairIndex" :time-frame="timeFrame" :time-frame-index="timeFrameIndex"></timeframe-status>
 		</td>
+		<td>
+			<i @click="deleteIt" class="fas fa-times"></i>
+		</td>
 	</tr>
 </template>
 <script>
 	import TimeframeStatus from "./TimeframeStatus.vue";
 	import TrendArrow from "./TrendArrow.vue";
 	import SummaryTrendArrow from "./SummaryTrendArrow.vue";
+	import {mapActions} from 'vuex';
 
 	export default {
 		components: {SummaryTrendArrow, TrendArrow, TimeframeStatus},
@@ -22,6 +26,13 @@
 		data: () => ({}),
 		created() {
 			console.log(this.pair.timeFrames)
+		},
+		methods: {
+			...mapActions(['setInstrumentToDelete', 'setShowDeleteConfirmationWindow']),
+			deleteIt: function () {
+				this.setInstrumentToDelete(this.pair._id);
+				this.setShowDeleteConfirmationWindow(true)
+			}
 		}
 	}
 </script>

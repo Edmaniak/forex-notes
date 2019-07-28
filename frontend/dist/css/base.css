@@ -37,10 +37,39 @@
 	font-family: 'Open Sans';
 	color: var(--black);
 }
+
 html {
 	background-color: #f4f4f4;
 }
 
 span, a, strong {
 	display: inline-block;
+}
+
+.modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	display: none;
+	width: 500px;
+	flex-direction: column;
+	padding: 30px;
+	background-color: white;
+	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+	justify-content: center;
+	align-items: center;
+}
+
+.modal.active {
+	display: flex;
+}
+.modal .close {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+
+.modal .btn {
+	margin-top: 15px;
 }

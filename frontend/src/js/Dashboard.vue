@@ -6,6 +6,8 @@
 			<forex-grid :pairs="allInstruments"></forex-grid>
 			<economical-calendar></economical-calendar>
 		</div>
+		<delete-confirmation-window></delete-confirmation-window>
+		<add-instrument></add-instrument>
 	</div>
 </template>
 <script>
@@ -14,10 +16,16 @@
 	import Countdown from "./components/Countdown.vue";
 	import ControlPanel from "./components/ControlPanel.vue";
 	import EconomicalCalendar from "./components/EconomicalCalendar.vue";
+	import DeleteConfirmationWindow from "./components/modals/DeleteConfirmationWindow.vue";
+	import AddInstrument from "./components/modals/AddInstrumentWindow.vue";
+
 	export default {
 		data: () => ({}),
 		computed: mapGetters(['allInstruments']),
-		components: {EconomicalCalendar, ControlPanel, Countdown, ForexGrid},
+		components: {
+			AddInstrument,
+			DeleteConfirmationWindow, EconomicalCalendar, ControlPanel, Countdown, ForexGrid
+		},
 		methods: {
 			...mapActions(['fetchInstruments']),
 		},
