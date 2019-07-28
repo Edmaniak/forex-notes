@@ -73,3 +73,11 @@ span, a, strong {
 .modal .btn {
 	margin-top: 15px;
 }
+
+input:active, textarea:active, a:active {
+	outline: none;
+}
+
+input:focus, textarea:focus, a:focus {
+	outline: none;
+}

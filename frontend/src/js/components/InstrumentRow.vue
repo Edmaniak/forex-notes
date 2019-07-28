@@ -2,8 +2,10 @@
 	<tr>
 		<td class="pair">
 			<div>
+				<img @click="changeOnFire" class="on-fire" src="img/trending.svg" alt="not trending" v-if="pair.onFire">
+				<img @click="changeOnFire" class="on-fire" v-else src="img/trending-empty.svg" alt="not trending">
 				<summary-trend-arrow :timeFrames="pair.timeFrames"></summary-trend-arrow>
-				<span>{{pair.name}}</span>
+				<strong>{{pair.name}}</strong>
 			</div>
 		</td>
 		<td v-for="(timeFrame, timeFrameIndex) in this.pair.timeFrames">
@@ -35,6 +37,9 @@
 			deleteIt: function () {
 				this.setInstrumentToDelete({id:this.pair._id, index: this.pairIndex});
 				this.setShowDeleteConfirmationWindow(true)
+			},
+			changeOnFire: function () {
+
 			}
 		}
 	}
@@ -44,7 +49,11 @@
 		display: flex;
 		align-items: center;
 	}
-
+	.on-fire {
+		width: 30px;
+		margin-right: 5px;
+		cursor: pointer;
+	}
 	td {
 		padding: 15px 10px;
 	}
