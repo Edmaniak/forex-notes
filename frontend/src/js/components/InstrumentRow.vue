@@ -50,6 +50,13 @@
 		align-items: center;
 	}
 
+	strong {
+		padding: 3px 10px;
+		border-radius: 3px;
+		background-color: #b9abab;
+		text-transform: uppercase;
+	}
+
 	.on-fire {
 		width: 30px;
 		margin-right: 5px;
@@ -63,6 +70,7 @@
 	td:first-child {
 		border-top-left-radius: 10px;
 		border-bottom-left-radius: 10px;
+		padding-right: 0;
 	}
 	td:last-child {
 		border-top-right-radius: 10px;
