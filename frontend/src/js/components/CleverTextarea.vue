@@ -1,12 +1,18 @@
 <template>
-	<textarea v-model="dataText" @blur="$emit('onBlur', dataText)">{{dataText}}</textarea>
+	<textarea :class="className" v-model="dataText" @blur="$emit('onBlur', dataText)">{{dataText}}</textarea>
 </template>
 <script>
 	export default {
-		props: ['text'],
+		props: ['text', 'timeFrame'],
 		data: () => ({
-			dataText: ""
+			dataText: "",
+			classValues: ['down-trend', 'chop', 'up-trend'],
 		}),
+		computed: {
+			className() {
+				return this.classValues[this.timeFrame.value];
+			}
+		},
 		created() {
 			this.dataText = this.text;
 		},
@@ -23,5 +29,14 @@
 		width: 100%;
 		resize: none;
 		min-height: 80px;
+	}
+	textarea.chop {
+		background-color: var(--orange);
+	}
+	textarea.up-trend {
+		background-color: var(--green);
+	}
+	textarea.down-trend {
+		background-color: var(--red);
 	}
 </style>

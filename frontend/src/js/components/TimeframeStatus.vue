@@ -1,7 +1,7 @@
 <template>
 	<div class="timeframe-status">
-		<trend-arrow :time-frame="timeFrame" :time-frame-index="timeFrameIndex" :pair-index="pairIndex"></trend-arrow>
-		<clever-textarea @onBlur="change" :instrument="instrument" :text="timeFrame.comment"></clever-textarea>
+		<trend-arrow :time-frame="timeFrame" :time-frame-index="timeFrameIndex" :pair-index="pairIndex"/>
+		<clever-textarea @onBlur="change" :time-frame="timeFrame" :instrument="instrument" :text="timeFrame.comment"/>
 	</div>
 </template>
 <script>
@@ -16,7 +16,6 @@
 		methods: {
 			...mapActions(['changeComment']),
 			change: function (newComment) {
-				console.log(newComment);
 				this.changeComment({
 					timeFrameIndex: this.timeFrameIndex,
 					pairIndex: this.pairIndex,

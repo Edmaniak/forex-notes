@@ -1,12 +1,22 @@
+const axios = require('axios');
+
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const connectionString = 'mongodb+srv://admin:Adik3714@cluster0-p1zzs.mongodb.net/FinancialInstrumentsData?retryWrites=true&w=majority';
 const Instrument = require('./backend/models/instrument');
 const BodyParser = require('body-parser');
+const cors = require('cors');
 const opn = require('opn');
 const app = express();
 // Initialization
+app.use(cors());
+app.options('*', cors());
+app.use(function (req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+});
 app.use(express.static("./frontend/dist"));
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({extended: true}));
@@ -73,6 +83,18 @@ app.delete('/api/instruments', async (request, response) => {
 	} catch (err) {
 		response.status(500).send(err);
 	}
+});
+
+app.get('/api/login', async (req, res) => {
+	try {
+		const data = await axios.get(`https://www.myfxbook.com/api/login.json?email=${this.username}&password=${this.password}`);
+		console.log(data.data);
+		res.send(data.data);
+	} catch(err) {
+		console.log(err);
+	}
+
+
 });
 
 app.listen(3000);

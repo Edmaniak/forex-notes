@@ -1,14 +1,14 @@
 <template>
 	<div id="dashboard">
 		<div class="container">
-			<countdown></countdown>
-			<control-panel></control-panel>
-			<forex-grid :pairs="allInstruments"></forex-grid>
-			<economical-calendar></economical-calendar>
-			<my-stats></my-stats>
+			<countdown/>
+			<control-panel/>
+			<forex-grid/>
+			<economical-calendar/>
+			<my-stats/>
 		</div>
-		<delete-confirmation-window></delete-confirmation-window>
-		<add-instrument></add-instrument>
+		<delete-confirmation-window/>
+		<add-instrument/>
 	</div>
 </template>
 <script>
@@ -23,7 +23,6 @@
 
 	export default {
 		data: () => ({}),
-		computed: mapGetters(['allInstruments']),
 		components: {
 			MyStats,
 			AddInstrument,

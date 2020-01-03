@@ -13,8 +13,12 @@ const getters = {
 };
 const actions = {
 	async fetchInstruments({commit}) {
-		const response = await axios.get('/api/instruments');
-		commit('setInstruments', response.data);
+		axios.get('/api/instruments').then(res => {
+			res.data.forEach((instrument) => {
+				instrument['sumValue'] = instrument.timeFrames.reduce((a, b) => {return a + b.value}, 0);
+			});
+			commit('setInstruments', res.data.sort((a,b) => (a.sumValue < b.sumValue) ? 1 : -1));
+		});
 	},
 	refreshArrows({commit, state}, arrow) {
 		commit('changeArrow', arrow);
@@ -24,7 +28,7 @@ const actions = {
 		commit('changeComment', data);
 		axios.put(`/api/instrument/${state.instruments[data.pairIndex]._id}`, state.instruments[data.pairIndex]);
 	},
-	deleteInstrument({commit,state}) {
+	deleteInstrument({commit, state}) {
 		axios.delete(`/api/instrument/${state.instruments.instrumentToDeleteId}`)
 			.then((res) => {
 				commit('deleteInstrument');

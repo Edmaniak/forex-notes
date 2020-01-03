@@ -4,17 +4,22 @@
 			<div>
 				<img @click="changeOnFire" class="on-fire" src="img/trending.svg" alt="not trending" v-if="pair.onFire">
 				<img @click="changeOnFire" class="on-fire" v-else src="img/trending-empty.svg" alt="not trending">
-				<summary-trend-arrow :timeFrames="pair.timeFrames"></summary-trend-arrow>
+				<summary-trend-arrow :timeFrames="pair.timeFrames"/>
 				<strong>{{pair.name}}</strong>
 			</div>
 		</td>
 		<td v-for="(timeFrame, timeFrameIndex) in this.pair.timeFrames">
 			<timeframe-status :instrument="pair" :pair-index="pairIndex" :time-frame="timeFrame"
-							  :time-frame-index="timeFrameIndex"></timeframe-status>
+							  :time-frame-index="timeFrameIndex"/>
 		</td>
 		<td>
-			<div @click="deleteIt">
-				<i class="fas fa-times"></i>
+			<div>
+				<div>
+					<i class="fas fa-money-check-alt"></i>
+				</div>
+				<div @click="deleteIt">
+					<i class="fas fa-times"></i>
+				</div>
 			</div>
 		</td>
 	</tr>
@@ -49,7 +54,17 @@
 		display: flex;
 		align-items: center;
 	}
-
+	svg {
+		opacity: 0.75;
+		font-size: 22px;
+		margin: 0 0.5em;
+	}
+	.fa-money-check-alt {
+		fill: var(--green) !important;
+	}
+	.fa-times {
+		fill: var(--red) !important;
+	}
 	strong {
 		padding: 3px 10px;
 		border-radius: 3px;

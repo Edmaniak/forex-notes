@@ -12,16 +12,18 @@
 		</tr>
 		</thead>
 		<tbody>
-		<currency-row v-bind:key="pair.name" v-for="(pair, index) in pairs" :pairIndex="index"
-					  :pair="pair"></currency-row>
+		<currency-row v-bind:key="pair.name" v-for="(pair, index) in allInstruments" :pairIndex="index"
+					  :pair="pair"/>
 		</tbody>
 	</table>
 </template>
 <script>
 	import CurrencyRow from "./InstrumentRow.vue";
+  import {mapGetters} from "vuex";
 
 	export default {
 		props: ['pairs'],
+	  computed: mapGetters(['allInstruments']),
 		components: {CurrencyRow},
 	}
 </script>
