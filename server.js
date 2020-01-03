@@ -85,16 +85,44 @@ app.delete('/api/instruments', async (request, response) => {
 	}
 });
 
-app.get('/api/login', async (req, res) => {
+app.get('/api/login/:email/:password', async (req, res) => {
 	try {
-		const data = await axios.get(`https://www.myfxbook.com/api/login.json?email=${this.username}&password=${this.password}`);
-		console.log(data.data);
+		const {email, password} = req.params;
+		const data = await axios.get(`https://www.myfxbook.com/api/login.json?email=${email}&password=${password}`);
 		res.send(data.data);
 	} catch(err) {
 		console.log(err);
 	}
+});
 
+app.get('/api/openTrades/:sessionId/:accountId', async (req, res) => {
+	try {
+		const {sessionId, accountId} = req.params;
+		const data = await axios.get(`https://www.myfxbook.com/api/get-open-trades.json?session=${sessionId}&id=${accountId}`);
+		res.send(data.data);
+	} catch(err) {
+		console.log(err);
+	}
+});
 
+app.get('/api/history/:sessionId/:accountId', async (req, res) => {
+	try {
+		const {sessionId, accountId} = req.params;
+		const data = await axios.get(`https://www.myfxbook.com/api/get-history.json?session=${sessionId}&id=${accountId}`);
+		res.send(data.data);
+	} catch(err) {
+		console.log(err);
+	}
+});
+
+app.get('/api/history/:sessionId/:accountId', async (req, res) => {
+	try {
+		const {sessionId, accountId} = req.params;
+		const data = await axios.get(`https://www.myfxbook.com/api/get-history.json?session=${sessionId}&id=${accountId}`);
+		res.send(data.data);
+	} catch(err) {
+		console.log(err);
+	}
 });
 
 app.listen(3000);

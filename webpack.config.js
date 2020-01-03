@@ -15,6 +15,7 @@ module.exports = {
 		path: path.resolve(__dirname, 'frontend/dist/js')
 	},
 	resolve: {
+		extensions: ['.vue','*', '.js'],
 		alias: {
 			vue: 'vue/dist/vue.js'
 		}

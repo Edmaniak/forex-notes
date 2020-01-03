@@ -9,7 +9,11 @@
 		mounted() {
 			window.setInterval(() => {
 				this.now = 60 - new Date().getMinutes();
-			},60000)
+				if (this.now === 0) {
+					const audio = new Audio('dist/sound/notification.mp3');
+					audio.play();
+				}
+			}, 60000)
 		}
 	}
 </script>
@@ -24,6 +28,7 @@
 		justify-content: center;
 		width: 100%;
 	}
+
 	img {
 		width: 28px;
 		margin-right: 15px;
