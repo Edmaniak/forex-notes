@@ -15,9 +15,12 @@ const actions = {
 	async fetchInstruments({commit}) {
 		axios.get('/api/instruments').then(res => {
 			res.data.forEach((instrument) => {
-				instrument['sumValue'] = instrument.timeFrames.reduce((a, b) => {return a + b.value}, 0);
+				instrument['sumValue'] = instrument.timeFrames.reduce((a, b) => {
+					return a + b.value
+				}, 0);
+				if (instrument.onFire) instrument.sumValue += 3;
 			});
-			commit('setInstruments', res.data.sort((a,b) => (a.sumValue < b.sumValue) ? 1 : -1));
+			commit('setInstruments', res.data.sort((a, b) => (a.sumValue < b.sumValue) ? 1 : -1));
 		});
 	},
 	refreshArrows({commit, state}, arrow) {
@@ -45,6 +48,10 @@ const actions = {
 	setInstrumentToDelete: ({commit}, data) => {
 		commit('setInstrumentToDelete', data)
 	},
+	switchOnFire: ({commit}, data) => {
+		commit('switchOnFire', data);
+		axios.put(`/api/instrument/${state.instruments[data.index]._id}`, state.instruments[data.index])
+	}
 
 };
 const mutations = {
@@ -65,6 +72,9 @@ const mutations = {
 		state.instruments.instrumentToDeleteId = data.id;
 		state.instruments.instrumentToDeleteIndex = data.index
 	},
+	switchOnFire: (state, data) => {
+		state.instruments[data.index].onFire = !state.instruments[data.index].onFire;
+	}
 };
 
 export default {

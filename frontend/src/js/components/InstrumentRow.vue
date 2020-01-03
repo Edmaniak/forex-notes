@@ -10,7 +10,7 @@
 		</td>
 		<td v-for="(timeFrame, timeFrameIndex) in this.pair.timeFrames">
 			<timeframe-status :instrument="pair" :pair-index="pairIndex" :time-frame="timeFrame"
-							  :time-frame-index="timeFrameIndex"/>
+			                  :time-frame-index="timeFrameIndex"/>
 		</td>
 		<td>
 			<div>
@@ -38,13 +38,13 @@
 			console.log(this.pair.timeFrames)
 		},
 		methods: {
-			...mapActions(['setInstrumentToDelete', 'setShowDeleteConfirmationWindow']),
+			...mapActions(['setInstrumentToDelete', 'setShowDeleteConfirmationWindow', 'switchOnFire']),
 			deleteIt: function () {
 				this.setInstrumentToDelete({id: this.pair._id, index: this.pairIndex});
 				this.setShowDeleteConfirmationWindow(true)
 			},
 			changeOnFire: function () {
-
+				this.switchOnFire({id: this.pair._id, index: this.pairIndex});
 			}
 		}
 	}
@@ -54,17 +54,21 @@
 		display: flex;
 		align-items: center;
 	}
+
 	svg {
 		opacity: 0.75;
 		font-size: 22px;
 		margin: 0 0.5em;
 	}
+
 	.fa-money-check-alt {
 		fill: var(--green) !important;
 	}
+
 	.fa-times {
 		fill: var(--red) !important;
 	}
+
 	strong {
 		padding: 3px 10px;
 		border-radius: 3px;
@@ -82,11 +86,13 @@
 		padding: 15px 10px;
 		background-color: #dedede;
 	}
+
 	td:first-child {
 		border-top-left-radius: 10px;
 		border-bottom-left-radius: 10px;
 		padding-right: 0;
 	}
+
 	td:last-child {
 		border-top-right-radius: 10px;
 		border-bottom-right-radius: 10px;
