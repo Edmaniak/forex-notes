@@ -1,5 +1,8 @@
 <template>
-	<div class="modal active">
+	<div class="modal" :class="{'active': getEnterTradeWindow}">
+		<div @click="setShowEnterTradeWindow(false)" class="close">
+			<i class="fas fa-times"></i>
+		</div>
 		<h2>Checks</h2>
 		<div class="input">
 			<div>
@@ -90,6 +93,7 @@
 	import TrendArrow from "../TrendArrow";
 	import AppButton from "../AppButton";
 	import axios from 'axios';
+	import {mapGetters, mapActions} from 'vuex';
 
 	export default {
 		data: () => ({
@@ -109,14 +113,15 @@
 			rate: 0
 		}),
 		components: {AppButton, TrendArrow},
-		async created() {
+		created() {
 			this.recalculate();
-			axios.get('/api/rate').then(res => {
-				console.log(res);
-				this.rate = res.data.rates.CZK
-			});
+			axios.get('/api/rate').then(res => this.rate = res.data.rates.CZK);
+		},
+		computed: {
+			...mapGetters(['getEnterTradeWindow'])
 		},
 		methods: {
+			...mapActions(['setShowEnterTradeWindow']),
 			recalculate() {
 				const maxRiskInUsd = (this.deposit / 100) * this.risk;
 

@@ -14,7 +14,7 @@
 		</td>
 		<td>
 			<div>
-				<div>
+				<div @click="setShowEnterTradeWindow(true)">
 					<i class="fas fa-money-check-alt"></i>
 				</div>
 				<div @click="deleteIt">
@@ -35,7 +35,7 @@
 		props: ['pair', 'pairIndex'],
 		data: () => ({}),
 		methods: {
-			...mapActions(['setInstrumentToDelete', 'setShowDeleteConfirmationWindow', 'switchOnFire']),
+			...mapActions(['setInstrumentToDelete', 'setShowDeleteConfirmationWindow', 'switchOnFire', 'setShowEnterTradeWindow']),
 			deleteIt: function () {
 				this.setInstrumentToDelete({id: this.pair._id, index: this.pairIndex});
 				this.setShowDeleteConfirmationWindow(true)

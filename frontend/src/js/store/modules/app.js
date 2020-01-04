@@ -2,11 +2,13 @@ const state = {
 	app: {
 		showDeleteConfirmationWindow: false,
 		showAddInstrumentWindow: false,
+		showEnterTradeWindow: false
 	}
 };
 const getters = {
 	getDeleteConfirmationWindowStatus: state => state.app.showDeleteConfirmationWindow,
-	getAddInstrumentWindow: state => state.app.showAddInstrumentWindow
+	getAddInstrumentWindow: state => state.app.showAddInstrumentWindow,
+	getEnterTradeWindow: state => state.app.showEnterTradeWindow
 };
 const actions = {
 
@@ -14,8 +16,10 @@ const actions = {
 		commit('setShowDeleteConfirmationWindow', visible);
 	},
 	setShowAddInstrumentWindow: ({commit}, visible) => {
-		console.log(visible);
 		commit('setAddInstrumentWindow', visible);
+	},
+	setShowEnterTradeWindow: ({commit}, visible) => {
+		commit('setShowEnterTradeWindow', visible);
 	}
 };
 const mutations = {
@@ -25,6 +29,9 @@ const mutations = {
 	},
 	setAddInstrumentWindow: (state, visible) => {
 		state.app.showAddInstrumentWindow = visible;
+	},
+	setShowEnterTradeWindow: (state, visible) => {
+		state.app.showEnterTradeWindow = visible;
 	}
 };
 
