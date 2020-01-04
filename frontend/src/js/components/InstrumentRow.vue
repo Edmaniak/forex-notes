@@ -34,9 +34,6 @@
 		components: {SummaryTrendArrow, TrendArrow, TimeframeStatus},
 		props: ['pair', 'pairIndex'],
 		data: () => ({}),
-		created() {
-			console.log(this.pair.timeFrames)
-		},
 		methods: {
 			...mapActions(['setInstrumentToDelete', 'setShowDeleteConfirmationWindow', 'switchOnFire']),
 			deleteIt: function () {

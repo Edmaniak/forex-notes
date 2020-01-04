@@ -5,10 +5,10 @@
 			<control-panel/>
 			<forex-grid/>
 			<economical-calendar/>
-			<my-stats/>
 		</div>
 		<delete-confirmation-window/>
 		<add-instrument/>
+		<enter-trade/>
 	</div>
 </template>
 <script>
@@ -19,12 +19,12 @@
 	import EconomicalCalendar from "./components/EconomicalCalendar.vue";
 	import DeleteConfirmationWindow from "./components/modals/DeleteConfirmationWindow.vue";
 	import AddInstrument from "./components/modals/AddInstrumentWindow.vue";
-	import MyStats from "./components/MyStats.vue";
+  import EnterTrade from "./components/modals/EnterTrade";
 
 	export default {
 		data: () => ({}),
 		components: {
-			MyStats,
+		EnterTrade,
 			AddInstrument,
 			DeleteConfirmationWindow, EconomicalCalendar, ControlPanel, Countdown, ForexGrid
 		},

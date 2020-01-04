@@ -7,6 +7,7 @@ import VueRouter from 'vue-router'
 import Dashboard from "./Dashboard";
 import Situation from "./Situation";
 import History from "./History";
+import round from 'vue-round-filter';
 
 Vue.use(VueRouter);
 Vue.use(require('vue-script2'));
@@ -19,8 +20,13 @@ const router = new VueRouter({
 	]
 });
 
+Vue.filter('round', function (value) {
+	return Math.round(value * 100) / 100;
+});
+
 
 new Vue({
+	router,
 	store,
 	components: {App}
 }).$mount('#main');

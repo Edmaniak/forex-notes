@@ -51,9 +51,6 @@
 			classValues: ['down-trend', 'chop', 'up-trend'],
 			actualValue: -1
 		}),
-		created: function(){
-			console.log(this.timeFrames);
-		},
 		computed: {
 			classValue: function () {
 				return this.classValues[this.computeAverage()];
