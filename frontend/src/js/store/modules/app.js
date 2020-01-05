@@ -11,7 +11,6 @@ const getters = {
 	getEnterTradeWindow: state => state.app.showEnterTradeWindow
 };
 const actions = {
-
 	setShowDeleteConfirmationWindow: ({commit}, visible) => {
 		commit('setShowDeleteConfirmationWindow', visible);
 	},

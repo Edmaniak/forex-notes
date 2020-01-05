@@ -5,7 +5,12 @@
 				<img @click="changeOnFire" class="on-fire" src="img/trending.svg" alt="not trending" v-if="pair.onFire">
 				<img @click="changeOnFire" class="on-fire" v-else src="img/trending-empty.svg" alt="not trending">
 				<summary-trend-arrow :timeFrames="pair.timeFrames"/>
-				<strong>{{pair.name}}</strong>
+				<div class="mdc-chip mdc-theme--primary-bg" role="row">
+					<div class="mdc-chip__ripple"></div>
+					<span role="gridcell">
+           <span role="button" tabindex="0" class="mdc-chip__text">{{pair.name}}</span>
+          </span>
+				</div>
 			</div>
 		</td>
 		<td v-for="(timeFrame, timeFrameIndex) in this.pair.timeFrames">

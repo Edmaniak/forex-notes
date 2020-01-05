@@ -29,6 +29,7 @@
 		width: 100%;
 		resize: none;
 		min-height: 80px;
+		transition: all 0.3s;
 	}
 	textarea.chop {
 		background-color: var(--orange);

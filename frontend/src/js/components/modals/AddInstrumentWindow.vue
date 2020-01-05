@@ -1,5 +1,5 @@
 <template>
-	<v-dialog title="Add instrument" :active="getAddInstrumentWindow">
+	<v-dialog @onClose="setShowAddInstrumentWindow(false)" title="Add instrument" :active="getAddInstrumentWindow">
 		<div slot="body">
 			<v-text-field type="text" label="Instrument code" v-model="name"/>
 		</div>
@@ -27,6 +27,5 @@
 		methods: {
 			...mapActions(['addInstrument', 'setShowAddInstrumentWindow']),
 		}
-
 	}
 </script>

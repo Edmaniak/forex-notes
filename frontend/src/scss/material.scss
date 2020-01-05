@@ -5,3 +5,9 @@
 @import "@material/fab/mdc-fab";
 @import "@material/dialog/mdc-dialog";
 @import "@material/textfield/mdc-text-field";
+@import "@material/chips/mdc-chips";
+@import "@material/card/mdc-card";
+.mdc-chip {
+	@include mdc-chip-fill-color($mdc-theme-secondary);
+	@include mdc-chip-ink-color(white)
+}

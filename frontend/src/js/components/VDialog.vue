@@ -17,7 +17,7 @@
 				</footer>
 			</div>
 		</div>
-		<div class="mdc-dialog__scrim"></div>
+		<div class="mdc-dialog__scrim" @click="$emit('onClose')"></div>
 	</div>
 </template>
 <script>
