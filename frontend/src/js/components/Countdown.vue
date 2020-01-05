@@ -1,5 +1,7 @@
 <template>
-	<div><img src="img/clock.svg" alt="">{{now}} minutes remains</div>
+	<div><i class="material-icons">
+		alarm
+	</i>{{now}} minutes remains</div>
 </template>
 <script>
 	export default {
@@ -19,18 +21,11 @@
 </script>
 <style scoped>
 	div {
-		text-align: center;
-		font-size: 32px;
-		font-weight: bold;
-		margin: 0 auto 60px;
-		display: inline-flex;
+		margin-left: 35px;
+		display: flex;
 		align-items: center;
-		justify-content: center;
-		width: 100%;
 	}
-
-	img {
-		width: 28px;
-		margin-right: 15px;
+	i {
+		margin-right: 5px;
 	}
 </style>

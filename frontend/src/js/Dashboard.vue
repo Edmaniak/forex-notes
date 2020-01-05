@@ -1,7 +1,6 @@
 <template>
 	<div id="dashboard">
 		<div class="container">
-			<countdown/>
 			<control-panel/>
 			<forex-grid/>
 			<economical-calendar/>
@@ -37,9 +36,5 @@
 	}
 </script>
 <style>
-	.container {
-		max-width: 1600px;
-		margin: 0 auto;
-		margin-top: 100px;
-	}
+
 </style>

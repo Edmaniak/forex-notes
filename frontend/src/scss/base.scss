@@ -1,0 +1,94 @@
+@font-face {
+	font-family: 'Open Sans';
+	src: url('../fonts/OpenSans-Light.woff2') format('woff2'),
+	url('../fonts/OpenSans-Light.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	src: url('../fonts/OpenSans-Bold.woff2') format('woff2'),
+	url('../fonts/OpenSans-Bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	src: url('../fonts/OpenSans-Regular.woff2') format('woff2'),
+	url('../fonts/OpenSans-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.container {
+	max-width: 1600px;
+	padding-top: 100px;
+	margin: 0 auto;
+}
+
+
+:root {
+	--blue: #247BA0;
+	--green: #88b997;
+	--light-green: #B2DBBF;
+	--yellow: #F3FFBD;
+	--orange: #ff8647;
+	--red: #FF1654;
+	--black: #191919
+}
+
+* {
+	font-family: 'Open Sans';
+}
+
+html {
+	background-color: #f4f4f4;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+span, a, strong {
+	display: inline-block;
+}
+
+.modal {
+	position: fixed;
+	top: 50%;
+	border-radius: 5px;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	display: none;
+	width: 500px;
+	flex-direction: column;
+	padding: 30px;
+	background-color: white;
+	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+	justify-content: center;
+	align-items: center;
+}
+
+.modal.active {
+	display: flex;
+}
+.modal .close {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+
+.modal .btn {
+	margin-top: 15px;
+}
+
+input:active, textarea:active, a:active {
+	outline: none;
+}
+
+input:focus, textarea:focus, a:focus {
+	outline: none;
+}

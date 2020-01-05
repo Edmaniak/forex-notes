@@ -1,22 +1,16 @@
 <template>
 	<div class="control-panel">
-		<app-button @onClick="func" class="btn">+</app-button>
+		<app-circle-button icon="add" @onClick="setShowAddInstrumentWindow(true)"/>
 	</div>
 </template>
 <script>
 	import {mapActions} from 'vuex'
 	import AppButton from "./AppButton.vue";
+  import AppCircleButton from "./AppCircleButton";
 	export default {
-		components: {AppButton},
-		data: () => ({
-
-		}),
+		components: {AppCircleButton, AppButton},
 		methods: {
-			...mapActions(['setShowAddInstrumentWindow']),
-			func: function () {
-				console.log("FD");
-				this.setShowAddInstrumentWindow(true)
-			}
+			...mapActions(['setShowAddInstrumentWindow'])
 		}
 	}
 </script>

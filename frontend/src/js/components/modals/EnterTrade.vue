@@ -129,7 +129,7 @@
 				this.lotSplit1 = Math.round((this.lotSize * 0.75) * 10) / 10;
 				this.lotSplit2 = Math.round((this.lotSize * 0.25) * 10) / 10;
 
-				this.riskRewardRatio = `${Math.round(this.takeprofit / this.stoploss)}:${Math.round(this.stoploss / this.stoploss)}`;
+				this.riskRewardRatio = `${Math.round((this.takeprofit / this.stoploss) * 10) / 10}:${Math.round((this.stoploss / this.stoploss) * 10) / 10}`;
 
 				this.lossUSD = Math.round(this.stoploss * this.lotSize * 10);
 				this.gainUSD = Math.round(this.takeprofit * this.lotSize * 10);

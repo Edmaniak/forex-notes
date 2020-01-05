@@ -1,19 +1,23 @@
 <template>
-	<div class="modal" :class="{'active': getAddInstrumentWindow}">
-		<div @click="setShowAddInstrumentWindow(false)" class="close">
-			<i class="fas fa-times"></i>
+	<v-dialog title="Add instrument" :active="getAddInstrumentWindow">
+		<div slot="body">
+			<v-text-field type="text" label="Instrument code" v-model="name"/>
 		</div>
-		<h2>Přidat instrument</h2>
-		<input type="text" v-model="name">
-		<app-button @onClick="addInstrument({name})">Přidat</app-button>
-	</div>
+		<div slot="footer">
+			<button @click="addInstrument({name})" type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="yes">
+				<span class="mdc-button__label">Add instrument</span>
+			</button>
+		</div>
+	</v-dialog>
 </template>
 <script>
 	import AppButton from "../AppButton.vue";
 	import {mapActions, mapGetters} from "vuex"
+  import VDialog from "../VDialog";
+  import VTextField from "../VTextField";
 
 	export default {
-		components: {AppButton},
+		components: {VTextField, VDialog, AppButton},
 		data: () => ({
 			name: '',
 		}),

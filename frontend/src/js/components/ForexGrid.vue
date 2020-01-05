@@ -32,7 +32,6 @@
 		width: 100%;
 		border-radius: 20px;
 		border-spacing: 0 15px;
-		color: #0328381;
 	}
 	tr {
 		border-radius: 10px;

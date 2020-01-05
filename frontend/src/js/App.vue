@@ -1,11 +1,16 @@
 <template>
-	<router-view></router-view>
+	<div>
+		<app-bar/>
+		<router-view></router-view>
+	</div>
 </template>
 <script>
 	import {mapActions} from 'vuex';
+  import AppBar from "./components/AppBar";
 
 	export default {
-		data: () => ({}),
+	  components: {AppBar},
+	  data: () => ({}),
 		methods: {
 			...mapActions(['login'])
 		},

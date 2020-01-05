@@ -1,27 +1,30 @@
 const path = require('path');
-const { VueLoaderPlugin } = require('vue-loader');
+const {VueLoaderPlugin} = require('vue-loader');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-	entry: path.resolve(__dirname, 'frontend/src/js/index.js'),
-	devServer: {
-		contentBase: path.join(__dirname, 'frontend/dist'),
-		compress: true,
-		port: 9999,
-		hot: true
+	entry: {
+		main: path.resolve(__dirname, 'frontend/src/js/index.js'),
+		style: path.resolve(__dirname, 'frontend/src/scss/app.scss'),
+		material: path.resolve(__dirname, 'frontend/src/js/material.js')
 	},
 	output: {
-		filename: 'main.js',
-		path: path.resolve(__dirname, 'frontend/dist/js')
+		filename: 'js/[name].js',
+		path: path.resolve(__dirname, 'frontend/dist')
 	},
 	resolve: {
-		extensions: ['.vue','*', '.js'],
+		extensions: ['.vue', '*', '.js'],
 		alias: {
 			vue: 'vue/dist/vue.js'
 		}
 	},
 	plugins: [
 		new VueLoaderPlugin(),
+		new MiniCssExtractPlugin({
+			filename: '[name].css',
+			chunkFilename: '[id].css',
+		}),
 	],
 	module: {
 		rules: [
@@ -29,8 +32,6 @@ module.exports = {
 				test: /\.vue$/,
 				loader: 'vue-loader'
 			},
-			// this will apply to both plain `.js` files
-			// AND `<script>` blocks in `.vue` files
 			{
 				test: /\.js$/,
 				exclude: /(node_modules|bower_components)/,
@@ -39,14 +40,30 @@ module.exports = {
 					presets: ['@babel/preset-env']
 				}
 			},
-			// this will apply to both plain `.css` files
-			// AND `<style>` blocks in `.vue` files
 			{
-				test: /\.css$/,
+				test: /\.(sa|sc|c)ss$/,
 				use: [
-					'vue-style-loader',
-					'css-loader'
-				]
+					{
+						loader: MiniCssExtractPlugin.loader,
+					},
+					'css-loader?-url',
+					{
+						loader: 'postcss-loader',
+						options: {
+							config: {
+								path: './postcss.config.js'
+							}
+						}
+					},
+					{
+						loader: 'sass-loader',
+						options: {
+							sassOptions: {
+								includePaths: ['./node_modules']
+							}
+						}
+					}
+				],
 			}
 		]
 	},
