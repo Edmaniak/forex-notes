@@ -20,7 +20,7 @@ app.use(function (req, res, next) {
 app.use(express.static("./frontend/dist"));
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({extended: true}));
-mongoose.connect(connectionString, {useNewUrlParser: true});
+mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true});
 
 app.use('/', require('./backend/routes/instrument'));
 

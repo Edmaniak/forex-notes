@@ -3,33 +3,12 @@
 		<div @click="setShowEnterTradeWindow(false)" class="close">
 			<i class="fas fa-times"></i>
 		</div>
-		<h2>Checks</h2>
-		<div class="input">
-			<div>
-				<input type="checkbox">
-				<label for="">Ucházející up trend?</label>
-				<TrendArrow/>
-			</div>
-		</div>
-		<div class="input">
-			<div>
-				<input type="checkbox">
-				<label for="">Logická situace?</label>
-			</div>
-			<textarea placeholder="Poznamka"></textarea>
-		</div>
-		<div class="input">
-			<div>
-				<input type="checkbox">
-				<a href="https://forexfactory.com" target="_blank">Neutrální fundament?</a>
-			</div>
-			<textarea placeholder="Poznámka"></textarea>
-		</div>
-		<h2>Velikost</h2>
+		<h2 class="mdc-typography mdc-typography--headline6">Checks</h2>
+		<ChecksTable :checks="['Up trend?', 'Logicka situace', 'Neutralni fundament?']"/>
+		<h2 class="mdc-typography mdc-typography--headline6">Velikost</h2>
 		<div class="input">
 			<div>
 				<div>
-
 					<label for="">Deposit</label>
 					<input @change="recalculate" v-model="deposit" type="number">
 				</div>
@@ -51,38 +30,55 @@
 				</div>
 			</div>
 		</div>
+		<div class="input">
+			<div>
+				<div>
+					<label for="">RRR</label>
+					<input @change="recalculate" v-model="riskRewardRatio" type="text">
+				</div>
+				<div>
+					<label for="">Split ratio</label>
+					<input @change="recalculate" v-model="splitRatio" type="text">
+				</div>
+			</div>
+		</div>
 		<h2>Výstup</h2>
 		<div>
 			<ul>
 				<li v-for="feedback in feedbacks">{{feedback}}</li>
 			</ul>
 		</div>
-		<table>
-			<tr>
-				<th>Size:</th>
-				<td>{{lotSize | round }} lot</td>
-			</tr>
-			<tr>
-				<th>RRR:</th>
-				<td>{{riskRewardRatio}}</td>
-			</tr>
-			<tr>
-				<th>Split 1:</th>
-				<td>{{lotSplit1 }} lot</td>
-			</tr>
-			<tr>
-				<th>Split 2:</th>
-				<td>{{lotSplit2 }} lot</td>
-			</tr>
-			<tr>
-				<th>Loss:</th>
-				<td>{{lossUSD}} USD | {{lossCZK}} CZK</td>
-			</tr>
-			<tr>
-				<th>Gain:</th>
-				<td>{{gainUSD}} USD | {{gainCZK}} CZK</td>
-			</tr>
-		</table>
+		<div class="mdc-data-table">
+			<table class="mdc-data-table__table" aria-label="Dessert calories">
+				<tbody class="mdc-data-table__content">
+				<tr class="mdc-data-table__row">
+					<td class="mdc-data-table__cell">Size:</td>
+					<td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{lotSize | round }} lot</td>
+				</tr>
+				<tr class="mdc-data-table__row">
+					<td class="mdc-data-table__cell">RRR:</td>
+					<td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{riskRewardRatio}}</td>
+				</tr>
+				<tr class="mdc-data-table__row">
+					<td class="mdc-data-table__cell">Split 1:</td>
+					<td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{lotSplit1 }} lots</td>
+				</tr>
+				<tr class="mdc-data-table__row">
+					<td class="mdc-data-table__cell">Split 2:</td>
+					<td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{lotSplit2 }} lots</td>
+				</tr>
+				<tr class="mdc-data-table__row">
+					<td class="mdc-data-table__cell">Loss:</td>
+					<td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{lossUSD}} USD | {{lossCZK}} CZK</td>
+				</tr>
+				<tr class="mdc-data-table__row">
+					<td class="mdc-data-table__cell">Gain:</td>
+					<td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{gainUSD}} USD | {{gainCZK}} CZK</td>
+				</tr>
+
+				</tbody>
+			</table>
+		</div>
 		<div class="buttons">
 			<app-button>GO!</app-button>
 			<app-button>Cancel</app-button>
@@ -94,6 +90,8 @@
 	import AppButton from "../AppButton";
 	import axios from 'axios';
 	import {mapGetters, mapActions} from 'vuex';
+	import Checkbox from "../Checkbox";
+	import ChecksTable from "../ChecksTable";
 
 	export default {
 		data: () => ({
@@ -105,6 +103,7 @@
 			lotSplit1: 0,
 			lotSplit2: 0,
 			riskRewardRatio: '',
+			splitRatio: 0.75,
 			deposit: 5000,
 			lossCZK: 0,
 			lossUSD: 0,
@@ -112,7 +111,7 @@
 			gainCZK: 0,
 			rate: 0
 		}),
-		components: {AppButton, TrendArrow},
+		components: {ChecksTable, Checkbox, AppButton, TrendArrow},
 		created() {
 			this.recalculate();
 			axios.get('/api/rate').then(res => this.rate = res.data.rates.CZK);
@@ -126,8 +125,8 @@
 				const maxRiskInUsd = (this.deposit / 100) * this.risk;
 
 				this.lotSize = maxRiskInUsd / this.stoploss / 10;
-				this.lotSplit1 = Math.round((this.lotSize * 0.75) * 10) / 10;
-				this.lotSplit2 = Math.round((this.lotSize * 0.25) * 10) / 10;
+				this.lotSplit1 = Math.round((this.lotSize * this.splitRatio) * 10) / 10;
+				this.lotSplit2 = Math.round((this.lotSize * (1 - this.splitRatio)) * 10) / 10;
 
 				this.riskRewardRatio = `${Math.round((this.takeprofit / this.stoploss) * 10) / 10}:${Math.round((this.stoploss / this.stoploss) * 10) / 10}`;
 
@@ -149,14 +148,6 @@
 		width: 100%;
 		padding: 10px;
 		font-size: 15px;
-	}
-
-	h2 {
-		font-size: 18px;
-		text-transform: uppercase;
-		letter-spacing: 2px;
-		margin: 10px 0;
-
 	}
 
 	input[type="number"] {
@@ -181,14 +172,6 @@
 
 	.buttons {
 		display: flex;
-	}
-
-	th, td {
-		padding: 0 5px;
-	}
-
-	th {
-		text-align: right;
 	}
 
 	input {

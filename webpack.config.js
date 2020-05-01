@@ -50,9 +50,9 @@ module.exports = {
 					{
 						loader: 'postcss-loader',
 						options: {
-							config: {
-								path: './postcss.config.js'
-							}
+							options: {
+								plugins: () => [require('autoprefixer')]
+							},
 						}
 					},
 					{
@@ -60,7 +60,8 @@ module.exports = {
 						options: {
 							sassOptions: {
 								includePaths: ['./node_modules']
-							}
+							},
+							implementation: require('sass'),
 						}
 					}
 				],

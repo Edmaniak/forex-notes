@@ -1,39 +1,31 @@
 div[data-v-86c5f978] {
   margin-left: 35px;
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
-          align-items: center;
+  align-items: center;
   cursor: pointer;
 }
 i[data-v-86c5f978] {
   margin-right: 5px;
 }
-
 svg[data-v-5c11052e] {
   height: 30px;
   cursor: pointer;
   margin-right: 15px;
   fill: blue;
-  -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
 svg.down-trend[data-v-5c11052e] {
   fill: var(--red);
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 svg.up-trend[data-v-5c11052e] {
   fill: var(--green);
-  -webkit-transform: rotate(-135deg);
-          transform: rotate(-135deg);
+  transform: rotate(-135deg);
 }
 svg.chop[data-v-5c11052e] {
   fill: var(--orange);
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
+  transform: rotate(-90deg);
 }
-
 textarea[data-v-7207c95e] {
   padding: 10px;
   border: none;
@@ -44,7 +36,6 @@ textarea[data-v-7207c95e] {
   width: 100%;
   resize: none;
   min-height: 80px;
-  -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 textarea.chop[data-v-7207c95e] {
@@ -56,43 +47,32 @@ textarea.up-trend[data-v-7207c95e] {
 textarea.down-trend[data-v-7207c95e] {
   background-color: var(--red);
 }
-
 .timeframe-status {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 svg {
   height: 30px;
   cursor: pointer;
   margin-right: 5px;
   fill: blue;
-  -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
 svg.down-trend {
   fill: var(--red);
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 svg.up-trend {
   fill: var(--green);
-  -webkit-transform: rotate(-135deg);
-          transform: rotate(-135deg);
+  transform: rotate(-135deg);
 }
 svg.chop {
   fill: var(--orange);
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
+  transform: rotate(-90deg);
 }
-
 td > div[data-v-2ae2c706] {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
-          align-items: center;
+  align-items: center;
 }
 svg[data-v-2ae2c706] {
   opacity: 0.75;
@@ -129,7 +109,6 @@ td[data-v-2ae2c706]:last-child {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-
 .forex-grid[data-v-45b49935] {
   width: 100%;
   border-radius: 20px;
@@ -152,46 +131,34 @@ th[data-v-45b49935]:last-child {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-
 .control-panel[data-v-466eece4] {
-  display: -webkit-box;
   display: flex;
   max-width: 50%;
   margin: 0 auto;
   padding: 15px;
-  -webkit-box-pack: center;
-          justify-content: center;
+  justify-content: center;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
 .btn[data-v-466eece4]:last-child {
   margin-right: 0;
 }
-
 div[data-v-396d958a] {
   margin-top: 60px;
 }
-
+table[data-v-112a2b76] {
+  width: 100%;
+}
 .input[data-v-0a509808] {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  -webkit-box-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   border-bottom: #f6f6f6 1px solid;
   width: 100%;
   padding: 10px;
   font-size: 15px;
 }
-h2[data-v-0a509808] {
-  font-size: 18px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin: 10px 0;
-}
-input[type="number"][data-v-0a509808] {
+input[type=number][data-v-0a509808] {
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -204,42 +171,28 @@ textarea[data-v-0a509808] {
   margin-top: 5px;
 }
 .input div[data-v-0a509808] {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
 .buttons[data-v-0a509808] {
-  display: -webkit-box;
   display: flex;
-}
-th[data-v-0a509808], td[data-v-0a509808] {
-  padding: 0 5px;
-}
-th[data-v-0a509808] {
-  text-align: right;
 }
 input[data-v-0a509808] {
   border-radius: 5px;
   border: #e9e9e9 1px solid;
   padding: 5px;
 }
-
 .mdc-text-field--textarea[data-v-24ce0b63] {
   width: 50%;
 }
-
 .container {
   max-width: 1600px;
   margin: 0 auto;
   margin-top: 100px;
 }
-
 .container {
   max-width: 1600px;
   margin: 0 auto;
   margin-top: 100px;
 }
-
